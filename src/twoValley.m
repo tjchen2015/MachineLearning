@@ -3,6 +3,7 @@ function [  leftPos rightPos] = twoValley( vector )
 
 % search the  two valleys
 [pmax, maxIndex, pmin, minIndex] = extrema(vector);
+
 clear pmax;
 clear maxIndex;
 clear pmin

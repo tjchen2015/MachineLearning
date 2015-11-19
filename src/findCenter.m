@@ -9,11 +9,11 @@ rowSum = sum(irisImage,2);
 
 % find two valleys of columnSum and produce center coordinate on column
 [ leftValley, rightValley ] = twoValley(columnSum);
-centerPos(1) = (leftValley + rightValley)/2;
+centerPos(2) = (leftValley + rightValley)/2;
 
 % find two valleys of rowSum and produce center coordinate on row
 [leftValley, rightValley] = twoValley(rowSum);
-centerPos(2) =  (leftValley + rightValley)/2;
+centerPos(1) =  (leftValley + rightValley)/2;
 
 centerPos = round(centerPos);
 end
