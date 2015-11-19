@@ -3,8 +3,6 @@ function featureSet = irisFeatureSet(I, detectedSclera)
 %output: feature set for each image pixel in iris stage
 %feature set: x, y, uS, sigmaS, uCb, sigmaCb, proportion of sclera
 
-%testtesttesttesttesttesttesttest
-
 imageHSV = rgb2hsv(I);
 imageS = imageHSV(:, :, 2);
 imageYCbCr = rgb2ycbcr(I);
