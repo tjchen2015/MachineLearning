@@ -1,7 +1,8 @@
 clear
 clc
 
-irisImage = imread('ansIris1.bmp');
+imFile = strcat('ICE/', 'ansIris1.bmp');
+irisImage = imread(imFile);
 centerPos = findCenter(irisImage)
 
 innerDis = disCenter(irisImage, centerPos, 1);
@@ -20,6 +21,7 @@ outerDis = disCenter(irisImage, centerPos, 2);
 outerDis =  polyReg( outerDis, 9);
 % plot(outerDis)
 
-irisImage = imread('ansIris1.bmp');
+imFile = strcat('ICE/', 'ansIris1.bmp');
+irisImage = imread(imFile);
 drawRecogArea( irisImage, centerPos, innerDis, outerDis );
 

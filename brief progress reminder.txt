@@ -4,11 +4,12 @@ Testing:
     - integral image
     - average intensity u
     - standard deviation sigma
-2. group features into a vector
-3. sclera feature vector -> neural networks -> sclera image S1
+2. group features into a vector: {x, y, u0, u3, u7, u9, sig0, sig3, sig7, sig9}
+3. sclera feature vector -> neural networks(15) -> sclera image S1
 4. iris feature extraction function
     - 4 Proportion of S1
-5. sclera + iris feature vector -> neural networks -> iris image S2
+    - {x, y, u0, u3, u7, u9, sig0, sig3, sig7, sig9, p_left, p_right, p_up, p_down}
+5. sclera + iris feature vector -> neural networks(21) -> iris image S2
 6. S2 -> find center of S2 -> centerX,Y C
 7. S2, C -> get inner distance around the center -> distance vector d1 (domain 0~2pi)
 8. d1 -> polynomial regression -> d1'

@@ -11,12 +11,12 @@ distance = [];
 imageSize = size(irisImage);
 rMax = sqrt(imageSize(1)^2 + imageSize(2)^2)/2;
 rMax = round(rMax);
-rMax
 
 for i = 1:180
     c = cos(i*2*pi/180);
     s = sin(i*2*pi/180);
     black = 0;
+    distance(i) = 0;
     
     for r = 1:rMax
         % n for row, m for column
@@ -44,12 +44,13 @@ for i = 1:180
                     break;
                 end
             end
-            
-        else
-            
+         
         end
         
-        
+        %border loss
+        if distance(i) == 0 && i > 1
+            distance(i) = distance(i-1);
+        end
         
     end
     
