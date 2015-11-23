@@ -6,16 +6,12 @@ function p = scleraProportion(detectedSclera)
 
 II = integralImage(detectedSclera);
 
-for x = 1:height %??????????????????????
+for x = 1:height
     for y = 1:width
-        if detectedSclera(x, y) ~= 0
-            continue
-        end
-        
-        pWest = averageIntensity()
-        pEast
-        pNorth
-        pSouth
+        pWest = averageIntensity(II, 1, y-1, x, y);
+        pEast = averageIntensity(II, x, y-1, width, y);
+        pNorth = averageIntensity(II, x-1, 1, x, y);
+        pSouth = averageIntensity(II, x-1, y, x, height);
     end
 end
 
