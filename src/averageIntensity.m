@@ -21,8 +21,8 @@ if y2 > height
     y2 = height;
 end
 
-A = II(x1, y1);
-B = II(x2, y1);
-C = II(x1, y2);
+A = II(y1, x1);
+B = II(y1, x2);
+C = II(y2, x1);
 
-u = (II(x2, y2) + A - B - C) / T;
+u = (II(y2, x2) + A - B - C) / T;

@@ -7,18 +7,18 @@ function II = integralImage(I)
 s = [];
 II = [];
 
-for x = 1:height
-    for y = 1:width
+for x = 1:width
+    for y = 1:height
         if y == 1
-            s(x, 1) = 0 + I(x, y);%s(x, 0) = 0
+            s(y, x) = 0 + I(y, x);%s(x, 0) = 0
         else
-            s(x, y) = s(x, y-1) + I(x, y);
+            s(y, x) = s(y-1, x) + I(y, x);
         end
         
         if x == 1
-            II(1, y) = 0 + s(x, y);%II(0, y) = 0
+            II(y, x) = 0 + s(y, x);%II(0, y) = 0
         else
-            II(x, y) = II(x-1, y) + s(x, y);
+            II(y, x) = II(y, x-1) + s(y, x);
         end
     end
 end

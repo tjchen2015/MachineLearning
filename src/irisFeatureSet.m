@@ -65,8 +65,8 @@ for x = 1:width
             feature = [x, y, uS0, sigmaS0, uS3, sigmaS3, uS7, sigmaS7, uCb0, sigmaCb0, uCb3, sigmaCb3, uCb7, sigmaCb7];%features of pixel (x, y)
         end
         
-        proportion = scleraProportion(detectedSclera);%proportion of pixels that belong to the sclera in 4 directions
+        proportion = scleraProportion(detectedSclera, x, y);%proportion of pixels that belong to the sclera in 4 directions
         
-        featureSet{x, y} = [feature, proportion];
+        featureSet{y, x} = [feature, proportion];
     end
 end

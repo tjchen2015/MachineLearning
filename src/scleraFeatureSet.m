@@ -77,6 +77,6 @@ for x = 1:width
         
             feature = [x, y, uH0, sigmaH0, uH3, sigmaH3, uH7, sigmaH7, uCb0, sigmaCb0, uCb3, sigmaCb3, uCb7, sigmaCb7, uCr0, sigmaCr0, uCr3, sigmaCr3, uCr7, sigmaCr7];%features of pixel (x, y)
         end
-        featureSet{x, y} = feature;
+        featureSet{y, x} = feature;
     end
 end
