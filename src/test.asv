@@ -26,8 +26,7 @@ for n = 1:500
 end
 
 a = net(f);
-a = reshape(a, 480, 640);
-imshow(a);
+
 
 
 
