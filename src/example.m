@@ -21,7 +21,7 @@ outerDis = disCenter(irisImage, centerPos, 2);
 outerDis =  polyReg( outerDis, 9);
 % plot(outerDis)
 
-imFile = strcat('ICE/', 'ansIris1.bmp');
+imFile = strcat('ICE/', '1.bmp');
 irisImage = imread(imFile);
 drawRecogArea( irisImage, centerPos, innerDis, outerDis );
 

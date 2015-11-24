@@ -1,18 +1,23 @@
 clear
 clc
 
-net = feedforwardnet(10);
+% load('f.mat');
+% load('net.mat');
+% 
+% ans = net(f);
+% ans = reshape(ans, 480, 640);
 
-input = [0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1;
-                 0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1;
-                 0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1;
-                 0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1];
-             
-output = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
-for t = 1:1000
-    [net, tri] = train(net, input, output,nnMATLAB);
-end
-view(net);
+load('a1000.mat');
+figure;
+imagesc(a);
+colormap gray;
 
-t15 = net(input);
+load('a10.mat');
+figure;
+imagesc(a);
+colormap gray;
 
+% imFile = strcat('ICE/', 'ansSclera1.bmp');
+% scleraImage = imread(imFile);
+% figure;
+% imshow(scleraImage);
