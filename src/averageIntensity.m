@@ -5,8 +5,6 @@ function u = averageIntensity(II, x1, y1, x2, y2)
 
 [height, width] = size(II);
 
-T = (x2-x1+1) * (y2-y1+1);%number of pixels within rectangular region
-
 %check index out of bound
 if x1 < 1
     x1 = 1;
@@ -41,4 +39,5 @@ else
     C = II(y2, x1-1);
 end
 
+T = (x2-x1+1) * (y2-y1+1);%number of pixels within rectangular region
 u = (II(y2, x2) + A - B - C) / T;
