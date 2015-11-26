@@ -1,9 +1,5 @@
-clear
-clc
-
-testImage = imread('D:\HomeworkWorkspace\Machine Learning\Final project\UBIRIS\1.bmp');
+testImage = imread('D:\HomeworkWorkspace\Machine Learning\Final project\ICE\1.bmp');
 testImage = double(testImage);
-
 scFeatureSet = scleraFeatureSet(testImage, 1);
 scFeatureSet{480,638}
 

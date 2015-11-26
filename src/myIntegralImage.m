@@ -1,5 +1,5 @@
-function II = integralImage(I)
-%input: image I
+function II = myIntegralImage(I)
+%input: 1channel image I
 %output: integral image II
 
 [height, width] = size(I);

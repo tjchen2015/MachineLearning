@@ -7,10 +7,10 @@ if imageChannel == 1
     II = integralImage(I);
 else
     imageHSV = rgb2hsv(I);
-    imageH = imageHSV(:, :, 1);
+    imageH = imageHSV(:, :, 1) * 360;%[0~1]*360
     imageYCbCr = rgb2ycbcr(I);
-    imageCb = imageYCbCr(:, :, 2);%[0~1]
-    imageCr = imageYCbCr(:, :, 3);
+    imageCb = imageYCbCr(:, :, 2) * 255;%double[16/255 240/255]*255
+    imageCr = imageYCbCr(:, :, 3) * 255;%double[16/255 240/255]*255
 
     IIH = integralImage(imageH);%integral image of hue color image
     IICb = integralImage(imageCb);%integral image of blue chroma color image
