@@ -1,20 +1,43 @@
-function u = averageIntensity(II, x1, y1, x2, y2, usage)
-%input: integral image II
+function u = averageIntensity(II, x1, y1, x2, y2)
+%input: integral image II, rectangular region
+    %upper-left (x 1, y1) bottom-right (x2, y2)
 %output: average intensity u within rectangular region
-    %upper-left (x1, y1) bottom-right (x2, y2)
 
-if usage == 1
-    T = (x2-x1+1) * (y2-y1+1);%number of pixels within rectangular region
+[height, width] = size(II);
 
-    u = (II(x2, y2) + II(x1, y1) - II(x2, y1) - II(x1, y2)) / T;
-else usage == 2 %used when calculating proportion of sclera
-    T = 0;
-    for x = x1:x2
-        for y = y1:y2
-            if sclera(x, y) == 0
-                T = T + 1;
-            end
-        end
-    end
-    %??????????????????
+%check index out of bound
+if x1 < 1
+    x1 = 1;
 end
+if y1 < 1
+    y1 = 1;
+end
+
+if x2 > width
+    x2 = width;
+end
+if y2 > height
+    y2 = height;
+end
+
+%assign values
+if x1==1 && y1==1
+    A = 0;
+    B = 0;
+    C = 0;
+elseif x1 == 1
+    A = 0;
+    B = II(y1-1, x2);
+    C = 0;
+elseif y1 == 1
+    A = 0;
+    B = 0;
+    C = II(y2, x1-1);
+else
+    A = II(y1-1, x1-1);
+    B = II(y1-1, x2);
+    C = II(y2, x1-1);
+end
+
+T = (x2-x1+1) * (y2-y1+1);%number of pixels within rectangular region
+u = (II(y2, x2) + A - B - C) / T;
