@@ -4,7 +4,7 @@ function p = scleraProportion(detectedSclera, x, y)
 
 [height, width] = size(detectedSclera);
 
-II = integralImage(detectedSclera);
+II = myIntegralImage(detectedSclera);
 
 pWest = averageIntensity(II, 1, y-1, x, y);
 pEast = averageIntensity(II, x, y-1, width, y);
