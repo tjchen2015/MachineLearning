@@ -1,8 +1,8 @@
 clear
 clc
 
-% imFile = strcat('ICE/', '1.bmp');
-% testImage = imread(imFile);
+imFile = strcat('ICE/', '1.bmp');
+testImage = imread(imFile);
 imFile = strcat('ICE/', 'ansSclera1.bmp');
 scleraImage = imread(imFile);
 % imFile = strcat('ICE/', 'ansIris1.bmp');
@@ -11,13 +11,13 @@ scleraImage = imread(imFile);
 % testImage = double(testImage);
 % featureSet = scleraFeatureSet(testImage, 1);
 
-% f = ones(1,12);
-% for n = 1:480
-%     for m = 1:640
-%         tmp = featureSet{n,m};
-%         f = [f; tmp];
-%     end
-% end
+f = ones(1,12);
+for n = 1:480
+    for m = 1:640
+        tmp = featureSet{n,m};
+        f = [f; tmp];
+    end
+end
 
 load('f.mat');
 
