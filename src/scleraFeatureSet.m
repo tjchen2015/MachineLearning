@@ -1,10 +1,10 @@
 function featureSet = scleraFeatureSet(I, imageChannel)
 %input: test image I, number of image channels
-%output: feature set for each image pixel in sclera stage
+%output: a cell array feature set for each image pixel (a cell) in sclera stage
 %feature set: x, y, uH, sigmaH, uCb, sigmaCb, uCr, sigmaCr
 
 if imageChannel == 1
-    II = integralImage(I);
+    II = myIntegralImage(I);
 else
     imageHSV = rgb2hsv(I);
     imageH = imageHSV(:, :, 1) * 360;%[0~1]*360
@@ -12,9 +12,9 @@ else
     imageCb = imageYCbCr(:, :, 2) * 255;%double[16/255 240/255]*255
     imageCr = imageYCbCr(:, :, 3) * 255;%double[16/255 240/255]*255
 
-    IIH = integralImage(imageH);%integral image of hue color image
-    IICb = integralImage(imageCb);%integral image of blue chroma color image
-    IICr = integralImage(imageCr);%integral image of red chroma color image
+    IIH = myIntegralImage(imageH);%integral image of hue color image
+    IICb = myIntegralImage(imageCb);%integral image of blue chroma color image
+    IICr = myIntegralImage(imageCr);%integral image of red chroma color image
 end
 
 [height, width] = size(I);
