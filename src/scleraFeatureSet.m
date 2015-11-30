@@ -19,10 +19,10 @@ end
 
 [height, width] = size(I);
 
-featureSet = cell(height, width);
+featureSet = [];
 
-for x = 1:width
-    for y = 1:height
+for y = 1:height
+    for x = 1:width
         if imageChannel == 1
             %%%region of radius 0
             u0 = averageIntensity(II, x, y, x, y);
@@ -40,7 +40,7 @@ for x = 1:width
             u9 = averageIntensity(II, x-4, y-4, x+4, y+4);
             sigma9 = standardDeviation(II, x-4, y-4, x+4, y+4);
             
-            feature = [x, y, u0, sigma0, u3, sigma3, u5, sigma5, u7, sigma7, u9, sigma9];%features of pixel (x, y)
+            feature = [x; y; u0; sigma0; u3; sigma3; u5; sigma5; u7; sigma7; u9; sigma9];%features of pixel (x, y)
         else
             %hue color component
             %%%region of radius 0
@@ -75,8 +75,8 @@ for x = 1:width
             uCr7 = averageIntensity(IICr, x-3, y-3, x+3, y+3);
             sigmaCr7 = standardDeviation(IICr, x-3, y-3, x+3, y+3);
         
-            feature = [x, y, uH0, sigmaH0, uH3, sigmaH3, uH7, sigmaH7, uCb0, sigmaCb0, uCb3, sigmaCb3, uCb7, sigmaCb7, uCr0, sigmaCr0, uCr3, sigmaCr3, uCr7, sigmaCr7];%features of pixel (x, y)
+            feature = [x; y; uH0; sigmaH0; uH3; sigmaH3; uH7; sigmaH7; uCb0; sigmaCb0; uCb3; sigmaCb3; uCb7; sigmaCb7; uCr0; sigmaCr0; uCr3; sigmaCr3; uCr7; sigmaCr7];%features of pixel (x, y)
         end
-        featureSet{y, x} = feature;
+        featureSet = horzcat(featureSet, feature);
     end
 end

@@ -1,42 +1,95 @@
-clear
-clc
+%%%training test
+scleraFeature = [];%sclera feature sets of each image in matrix form
+scleraAnswer = [];%expected result of neural network
+% for i = 1:100
+%     filename = ['D:\HomeworkWorkspace\Machine Learning\Final project\data\feature sets\ICE\sc' num2str(i)];
+%     feature = load(filename);
+%     feature = feature.scFeatureSet;%feature = cell array
+%     [r, c] = size(feature);
+%     for j = 1:r
+%         for k = 1:c
+%             scleraFeature = horzcat(scleraFeature, feature{j, k}');%cell array to matrix
+%         end
+%     end
+%     
+%     scleraImage = imread(sprintf('D:\HomeworkWorkspace\Machine Learning\Final project\databases\answer\ansSclera%d.bmp', i));
+%     [r, c] = size(scleraImage);
+%     scleraAnswer = horzcat(scleraAnswer, reshape(scleraImage, 1, r*c));
+% end
 
-imFile = strcat('ICE/', '1.bmp');
-testImage = imread(imFile);
-imFile = strcat('ICE/', 'ansSclera1.bmp');
-scleraImage = imread(imFile);
-% imFile = strcat('ICE/', 'ansIris1.bmp');
-% irisImage = imread(imFile);
-% 
-% testImage = double(testImage);
-% featureSet = scleraFeatureSet(testImage, 1);
+%==========================================================================
+filename = 'D:\HomeworkWorkspace\Machine Learning\Final project\data\feature sets\ICE\sc1';
+feature = load(filename);
+feature = feature.scFeatureSet;
+scleraFeature = horzcat(scleraFeature, feature);
 
-f = ones(1,12);
-for n = 1:480
-    for m = 1:640
-        tmp = featureSet{n,m};
-        f = [f; tmp];
-    end
-end
+scleraImage = imread('D:\HomeworkWorkspace\Machine Learning\Final project\databases\answer\ansSclera1.bmp');
+[r, c] = size(scleraImage);
+scleraAnswer = horzcat(scleraAnswer, reshape(scleraImage, 1, r*c));
 
-load('f.mat');
+filename = 'D:\HomeworkWorkspace\Machine Learning\Final project\data\feature sets\ICE\sc50';
+feature = load(filename);
+feature = feature.scFeatureSet;
+scleraFeature = horzcat(scleraFeature, feature);
 
-f = f';
-f = f(: , 2:480*640+1);
+scleraImage = imread('D:\HomeworkWorkspace\Machine Learning\Final project\databases\answer\ansSclera50.bmp');
+% [r, c] = size(scleraImage);
+scleraAnswer = horzcat(scleraAnswer, reshape(scleraImage, 1, r*c));
 
-net = feedforwardnet(18);
-reScleraImage = reshape(scleraImage, 1, 307200);
+filename = 'D:\HomeworkWorkspace\Machine Learning\Final project\data\feature sets\ICE\sc113';
+feature = load(filename);
+feature = feature.scFeatureSet;
+scleraFeature = horzcat(scleraFeature, feature);
 
-for i = 1:1000
+scleraImage = imread('D:\HomeworkWorkspace\Machine Learning\Final project\databases\answer\ansSclera113.bmp');
+% [r, c] = size(scleraImage);
+scleraAnswer = horzcat(scleraAnswer, reshape(scleraImage, 1, r*c));
+
+filename = 'D:\HomeworkWorkspace\Machine Learning\Final project\data\feature sets\ICE\sc222';
+feature = load(filename);
+feature = feature.scFeatureSet;
+scleraFeature = horzcat(scleraFeature, feature);
+
+scleraImage = imread('D:\HomeworkWorkspace\Machine Learning\Final project\databases\answer\ansSclera222.bmp');
+% [r, c] = size(scleraImage);
+scleraAnswer = horzcat(scleraAnswer, reshape(scleraImage, 1, r*c));
+
+filename = 'D:\HomeworkWorkspace\Machine Learning\Final project\data\feature sets\ICE\sc340';
+feature = load(filename);
+feature = feature.scFeatureSet;
+scleraFeature = horzcat(scleraFeature, feature);
+
+scleraImage = imread('D:\HomeworkWorkspace\Machine Learning\Final project\databases\answer\ansSclera340.bmp');
+% [r, c] = size(scleraImage);
+scleraAnswer = horzcat(scleraAnswer, reshape(scleraImage, 1, r*c));
+
+filename = 'D:\HomeworkWorkspace\Machine Learning\Final project\data\feature sets\ICE\sc465';
+feature = load(filename);
+feature = feature.scFeatureSet;
+scleraFeature = horzcat(scleraFeature, feature);
+
+scleraImage = imread('D:\HomeworkWorkspace\Machine Learning\Final project\databases\answer\ansSclera465.bmp');
+% [r, c] = size(scleraImage);
+scleraAnswer = horzcat(scleraAnswer, reshape(scleraImage, 1, r*c));
+%==========================================================================
+
+net = feedforwardnet(12);
+for i = 1:100
     i
-    net = train(net, f, reScleraImage);
+%     net.efficiency.memoryReduction = 1;
+    net = train(net, scleraFeature, scleraAnswer);
 end
+filename = 'D:\HomeworkWorkspace\Machine Learning\Final project\data\neural network\nn5Ans';
+save(filename, 'net');
 
-a = net(f);
-a = reshape(a, 480, 640);
+a = net(scleraFeature);
+a = reshape(a, r, c);
 imagesc(a);
 colormap gray;
 
+% testImage = imread(sprintf('D:\\HomeworkWorkspace\\Machine Learning\\Final project\\databases\\ICE\\%d.bmp', i));
+% imFile = strcat('ICE/', 'ansIris1.bmp');
+% irisImage = imread(imFile);
 
-
-
+%==========================================================================
+testFeatureSet();
