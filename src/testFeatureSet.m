@@ -1,11 +1,11 @@
 % function [] = testFeatureSet()
 
-for i = 170:185
+for i = 32:50
     testImage = imread(sprintf('D:\\HomeworkWorkspace\\Machine Learning\\Final project\\databases\\ICE\\%d.bmp', i));
     testImage = double(testImage);
     scFeatureSet = scleraFeatureSet(testImage, 1);
     
-    filename = ['D:\HomeworkWorkspace\Machine Learning\Final project\data\feature sets\ICE\sc' num2str(i)];
+    filename = ['D:\HomeworkWorkspace\Machine Learning\Final project\data\feature sets\ICE\scNew' num2str(i)];
     save(filename, 'scFeatureSet');
 end
 
