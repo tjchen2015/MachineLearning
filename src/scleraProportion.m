@@ -11,4 +11,4 @@ pEast = averageIntensity(II, x, y-1, width, y);
 pNorth = averageIntensity(II, x-1, 1, x, y);
 pSouth = averageIntensity(II, x-1, y, x, height);
 
-p = [pWest, pEast, pNorth, pSouth];
+p = [pWest; pEast; pNorth; pSouth];

@@ -1,6 +1,6 @@
 function featureSet = scleraFeatureSet(I, imageChannel)
 %input: test image I, number of image channels
-%output: a cell array feature set for each image pixel (a cell) in sclera stage
+%output: a feature set in matrix form for each image pixel in sclera stage
 %feature set: x, y, uH, sigmaH, uCb, sigmaCb, uCr, sigmaCr
 
 if imageChannel == 1
@@ -19,64 +19,64 @@ end
 
 [height, width] = size(I);
 
-featureSet = cell(height, width);
+featureSet = [];
 
-for x = 1:width
-    for y = 1:height
+for y = 1:height
+    for x = 1:width
         if imageChannel == 1
             %%%region of radius 0
             u0 = averageIntensity(II, x, y, x, y);
             sigma0 = standardDeviation(II, x, y, x, y);
             %%%region of radius 3
-            u3 = averageIntensity(II, x-1, y-1, x+1, y+1);
-            sigma3 = standardDeviation(II, x-1, y-1, x+1, y+1);
+            u3 = averageIntensity(II, x-3, y-3, x+3, y+3);
+            sigma3 = standardDeviation(II, x-3, y-3, x+3, y+3);
             %%%region of radius 5
-            u5 = averageIntensity(II, x-2, y-2, x+2, y+2);
-            sigma5 = standardDeviation(II, x-2, y-2, x+2, y+2);
+            u5 = averageIntensity(II, x-5, y-5, x+5, y+5);
+            sigma5 = standardDeviation(II, x-5, y-5, x+5, y+5);
             %%%region of radius 7
-            u7 = averageIntensity(II, x-3, y-3, x+3, y+3);
-            sigma7 = standardDeviation(II, x-3, y-3, x+3, y+3);
+            u7 = averageIntensity(II, x-7, y-7, x+7, y+7);
+            sigma7 = standardDeviation(II, x-7, y-7, x+7, y+7);
             %%%region of radius 9
-            u9 = averageIntensity(II, x-4, y-4, x+4, y+4);
-            sigma9 = standardDeviation(II, x-4, y-4, x+4, y+4);
+            u9 = averageIntensity(II, x-9, y-9, x+9, y+9);
+            sigma9 = standardDeviation(II, x-9, y-9, x+9, y+9);
             
-            feature = [x, y, u0, sigma0, u3, sigma3, u5, sigma5, u7, sigma7, u9, sigma9];%features of pixel (x, y)
+            feature = [x; y; u0; sigma0; u3; sigma3; u5; sigma5; u7; sigma7; u9; sigma9];%features of pixel (x, y)
         else
             %hue color component
             %%%region of radius 0
             uH0 = averageIntensity(IIH, x, y, x, y);
             sigmaH0 = standardDeviation(IIH, x, y, x, y);
             %%%region of radius 3
-            uH3 = averageIntensity(IIH, x-1, y-1, x+1, y+1);
-            sigmaH3 = standardDeviation(IIH, x-1, y-1, x+1, y+1);
+            uH3 = averageIntensity(IIH, x-3, y-3, x+3, y+3);
+            sigmaH3 = standardDeviation(IIH, x-3, y-3, x+3, y+3);
             %%%region of radius 7
-            uH7 = averageIntensity(IIH, x-3, y-3, x+3, y+3);
-            sigmaH7 = standardDeviation(IIH, x-3, y-3, x+3, y+3);
+            uH7 = averageIntensity(IIH, x-7, y-7, x+7, y+7);
+            sigmaH7 = standardDeviation(IIH, x-7, y-7, x+7, y+7);
 
             %blue chroma color component
             %%%region of radius 0
             uCb0 = averageIntensity(IICb, x, y, x, y);
             sigmaCb0 = standardDeviation(IICb, x, y, x, y);
             %%%region of radius 3
-            uCb3 = averageIntensity(IICb, x-1, y-1, x+1, y+1);
-            sigmaCb3 = standardDeviation(IICb, x-1, y-1, x+1, y+1);
+            uCb3 = averageIntensity(IICb, x-3, y-3, x+3, y+3);
+            sigmaCb3 = standardDeviation(IICb, x-3, y-3, x+3, y+3);
             %%%region of radius 7
-            uCb7 = averageIntensity(IICb, x-3, y-3, x+3, y+3);
-            sigmaCb7 = standardDeviation(IICb, x-3, y-3, x+3, y+3);
+            uCb7 = averageIntensity(IICb, x-7, y-7, x+7, y+7);
+            sigmaCb7 = standardDeviation(IICb, x-7, y-7, x+7, y+7);
 
             %red chroma color component
             %%%region of radius 0
             uCr0 = averageIntensity(IICr, x, y, x, y);
             sigmaCr0 = standardDeviation(IICr, x, y, x, y);
             %%%region of radius 3
-            uCr3 = averageIntensity(IICr, x-1, y-1, x+1, y+1);
-            sigmaCr3 = standardDeviation(IICr, x-1, y-1, x+1, y+1);
+            uCr3 = averageIntensity(IICr, x-3, y-3, x+3, y+3);
+            sigmaCr3 = standardDeviation(IICr, x-3, y-3, x+3, y+3);
             %%%region of radius 7
-            uCr7 = averageIntensity(IICr, x-3, y-3, x+3, y+3);
-            sigmaCr7 = standardDeviation(IICr, x-3, y-3, x+3, y+3);
+            uCr7 = averageIntensity(IICr, x-7, y-7, x+7, y+7);
+            sigmaCr7 = standardDeviation(IICr, x-7, y-7, x+7, y+7);
         
-            feature = [x, y, uH0, sigmaH0, uH3, sigmaH3, uH7, sigmaH7, uCb0, sigmaCb0, uCb3, sigmaCb3, uCb7, sigmaCb7, uCr0, sigmaCr0, uCr3, sigmaCr3, uCr7, sigmaCr7];%features of pixel (x, y)
+            feature = [x; y; uH0; sigmaH0; uH3; sigmaH3; uH7; sigmaH7; uCb0; sigmaCb0; uCb3; sigmaCb3; uCb7; sigmaCb7; uCr0; sigmaCr0; uCr3; sigmaCr3; uCr7; sigmaCr7];%features of pixel (x, y)
         end
-        featureSet{y, x} = feature;
+        featureSet = horzcat(featureSet, feature);
     end
 end
