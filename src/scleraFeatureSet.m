@@ -1,6 +1,6 @@
 function featureSet = scleraFeatureSet(I, imageChannel)
 %input: test image I, number of image channels
-%output: a cell array feature set for each image pixel (a cell) in sclera stage
+%output: a feature set in matrix form for each image pixel in sclera stage
 %feature set: x, y, uH, sigmaH, uCb, sigmaCb, uCr, sigmaCr
 
 if imageChannel == 1
