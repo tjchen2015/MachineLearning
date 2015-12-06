@@ -12,7 +12,7 @@ imageSize = size(irisImage);
 rMax = sqrt(imageSize(1)^2 + imageSize(2)^2)/2;
 rMax = round(rMax);
 
-for i = 1:180
+for i = 1:181
     c = cos(i*2*pi/180);
     s = sin(i*2*pi/180);
     black = 0;
@@ -39,7 +39,7 @@ for i = 1:180
                 if irisImage(n,m) == 0
                     black = 1;
                 end
-                if (irisImage(n,m) == 255) && (black == 1)
+                if (irisImage(n,m) == 1) && (black == 1)
                     distance(i) = r;
                     break;
                 end

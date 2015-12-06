@@ -1,6 +1,7 @@
-function drawRecogArea( irisImage, centerPos, innerDis, outerDis )
+function outputImage = drawRecogArea( irisImage, centerPos, innerDis, outerDis )
 %DRAWRECOGAREA draw the iris area by inner and outer border on the given
 %iris  image.
+%   outputImage - the eye Image with iris Segmentation
 %   irisImage - the given background image
 %   innerDis - the inner-border distance w.r.t. center postion
 %   outerDis - the outer-border distance w.r.t. center postion
@@ -41,9 +42,10 @@ outerCoordinates = round(outerCoordinates);
 %draw inner and outer polygon by lines
 irisImage = insertShape(irisImage, 'Line', {innerCoordinates, outerCoordinates}, 'Color', {'red', 'green'}, 'Opacity', 0.7, 'LineWidth', 2);
 
-%show image
-figure;
-imshow(irisImage);
+% %show image
+% figure;
+% imshow(irisImage);
 
+outputImage = irisImage;
 end
 
