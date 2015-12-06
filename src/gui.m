@@ -101,14 +101,14 @@ function computebutton_Callback(hObject, eventdata, handles)
 example;
 
 % plot scelra
-% result = imread('scleratImage.bmp');
+% sclera = imread('scleraImage.bmp');
 % axes(handles.scleraFrame);
-% imshow(result); 
+% imshow(sclera); 
 
 % plot iris
-% result = imread('irisImage.bmp');
+% iris = imread('irisImage.bmp');
 % axes(handles.irisFrame);
-% imshow(result); 
+% imshow(iris); 
 
 % plot result
 result = imread('outputImage.bmp');

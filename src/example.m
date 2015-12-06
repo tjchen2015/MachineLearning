@@ -7,7 +7,7 @@ testImage = testImage/255;
 %% extract sclera features
 
 
-%% input to sclera network & output a sclera image then "save as scleratImage.bmp"
+%% input to sclera network & output a sclera image then "save as scleraImage.bmp"
 
 
 %% extract 4 proportions of tthe sclera image
