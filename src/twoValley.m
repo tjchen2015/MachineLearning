@@ -4,6 +4,11 @@ function [  leftPos rightPos] = twoValley( vector )
 % search the  two valleys
 [pmax, maxIndex, pmin, minIndex] = extrema(vector);
 
+figure;
+plot(vector);
+hold on;
+plot(minIndex, pmin, 'r*');
+
 clear pmax;
 clear maxIndex;
 clear pmin

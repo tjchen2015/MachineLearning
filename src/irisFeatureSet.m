@@ -1,9 +1,11 @@
-function featureSet = irisFeatureSet(I, detectedSclera, imageChannel)
+function featureSet = irisFeatureSet(I, detectedSclera)
 %input: test image I, detected sclera image, number of image channels
 %output: a feature set in matrix form for each image pixel in iris stage
 %feature set: x, y, uS, sigmaS, uCb, sigmaCb, proportion of sclera
 
-if imageChannel == 1
+[height, width, channels] = size(I);
+
+if channels == 1
     II = myIntegralImage(I);
 else
     imageHSV = rgb2hsv(I);
@@ -15,13 +17,11 @@ else
     IICb = myIntegralImage(imageCb);%integral image of blue chroma color image
 end
 
-[height, width] = size(I);
-
 featureSet = [];
 
 for y = 1:height
     for x = 1:width
-        if imageChannel == 1
+        if channels == 1
             %%%region of radius 0
             u0 = averageIntensity(II, x, y, x, y);
             sigma0 = standardDeviation(II, x, y, x, y);
