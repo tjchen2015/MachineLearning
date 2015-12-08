@@ -3,7 +3,6 @@ testImage = imread('testImage.bmp');
 testImage = double(testImage);
 testImage = testImage/255;
 
-
 %% find the teacher's answer and draw iris region with red color
 eyeNo = 1;
 load('ICEcircleinfo.mat');
@@ -32,7 +31,6 @@ irisImage = imread(imFile);
 irisImage = double(irisImage);
 irisImage = irisImage/255;
 
-
 %% find iris center and 2 borders
 centerPos = findCenter(irisImage);
 innerDis = disCenter(irisImage, centerPos, 1);
@@ -53,7 +51,6 @@ outerDisMax = max(outerDis);
 outerDis = ones(1,length(outerDis));
 outerDis = outerDisMax.*outerDis;
 % plot(outerDis)
-
 
 %% draw iris region with green color on output image
 outputImage = drawRecogArea( outputImage, centerPos, innerDis, centerPos, outerDis, 'green' );
