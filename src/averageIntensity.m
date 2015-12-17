@@ -1,6 +1,6 @@
 function u = averageIntensity(subImage)
-%input: integral image II, rectangular region
-    %upper-left (x 1, y1) bottom-right (x2, y2)
-%output: average intensity u within rectangular region
+%input: pixels within certain region
+%output: average intensity u within the region
 
-u = sum(subImage) / numel(subImage);
+rowCount = size(subImage, 1);
+u = sum(subImage) / rowCount;
