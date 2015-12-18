@@ -28,9 +28,11 @@ maxe4 = scaleR.^2.*teacherAns(6);
 maxError = maxe1e3+maxe2+maxe4;
 error = sum(error)/maxError;
 
+% if error over 100% then set it as 100%
 if error>1
     error = 1;
 end
+
 correct = 1-error;
 correct = 100*correct;
 correct = round(correct, 2);
