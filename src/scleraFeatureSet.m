@@ -26,6 +26,7 @@ if channels == 1
     u3 = colfilt(I, [7, 7], 'sliding', @averageIntensity);
     u3 = modifyEdge(u3, 3);
     u3_2 = colfilt(I2, [7, 7], 'sliding', @averageIntensity);
+    u3_2 = modifyEdge(u3_2, 3);
     
     diff = u3_2 - u3.^2;
     absDiff = abs(diff);
@@ -38,6 +39,7 @@ if channels == 1
     u5 = colfilt(I, [11, 11], 'sliding', @averageIntensity);
     u5 = modifyEdge(u5, 5);
     u5_2 = colfilt(I2, [11, 11], 'sliding', @averageIntensity);
+    u5_2 = modifyEdge(u5_2, 5);
     
     diff = u5_2 - u5.^2;
     absDiff = abs(diff);
@@ -50,6 +52,7 @@ if channels == 1
     u7 = colfilt(I, [15, 15], 'sliding', @averageIntensity);
     u7 = modifyEdge(u7, 7);
     u7_2 = colfilt(I2, [15, 15], 'sliding', @averageIntensity);
+    u7_2 = modifyEdge(u7_2, 7);
     
     diff = u7_2 - u7.^2;
     absDiff = abs(diff);
@@ -62,6 +65,7 @@ if channels == 1
     u9 = colfilt(I, [19, 19], 'sliding', @averageIntensity);
     u9 = modifyEdge(u9, 9);
     u9_2 = colfilt(I2, [19, 19], 'sliding', @averageIntensity);
+    u9_2 = modifyEdge(u9_2, 9);
     
     diff = u9_2 - u9.^2;
     absDiff = abs(diff);
@@ -91,6 +95,7 @@ else
     uH3 = colfilt(imageH, [7, 7], 'sliding', @averageIntensity);
     uH3 = modifyEdge(uH3, 3);
     uH3_2 = colfilt(IH2, [7, 7], 'sliding', @averageIntensity);
+    uH3_2 = modifyEdge(uH3_2, 3);
     
     diff = uH3_2 - uH3.^2;
     absDiff = abs(diff);
@@ -103,6 +108,7 @@ else
     uH7 = colfilt(imageH, [15, 15], 'sliding', @averageIntensity);
     uH7 = modifyEdge(uH7, 7);
     uH7_2 = colfilt(IH2, [15, 15], 'sliding', @averageIntensity);
+    uH7_2 = modifyEdge(uH7_2, 7);
     
     diff = uH7_2 - uH7.^2;
     absDiff = abs(diff);
@@ -123,6 +129,7 @@ else
     uCb3 = colfilt(imageCb, [7, 7], 'sliding', @averageIntensity);
     uCb3 = modifyEdge(uCb3, 3);
     uCb3_2 = colfilt(ICb2, [7, 7], 'sliding', @averageIntensity);
+    uCb3_2 = modifyEdge(uCb3_2, 3);
     
     diff = uCb3_2 - uCb3.^2;
     absDiff = abs(diff);
@@ -135,6 +142,7 @@ else
     uCb7 = colfilt(imageCb, [15, 15], 'sliding', @averageIntensity);
     uCb7 = modifyEdge(uCb7, 7);
     uCb7_2 = colfilt(ICb2, [15, 15], 'sliding', @averageIntensity);
+    uCb7_2 = modifyEdge(uCb7_2, 7);
     
     diff = uCb7_2 - uCb7.^2;
     absDiff = abs(diff);
@@ -160,6 +168,7 @@ else
     uCr3 = colfilt(imageCr, [7, 7], 'sliding', @averageIntensity);
     uCr3 = modifyEdge(uCr3, 3);
     uCr3_2 = colfilt(ICr2, [7, 7], 'sliding', @averageIntensity);
+    uCr3_2 = modifyEdge(uCr3_2, 3);
     
     diff = uCr3_2 - uCr3.^2;
     absDiff = abs(diff);
@@ -172,6 +181,7 @@ else
     uCr7 = colfilt(imageCr, [15, 15], 'sliding', @averageIntensity);
     uCr7 = modifyEdge(uCr7, 7);
     uCr7_2 = colfilt(ICr2, [15, 15], 'sliding', @averageIntensity);
+    uCr7_2 = modifyEdge(uCr7_2, 7);
     
     diff = uCr7_2 - uCr7.^2;
     absDiff = abs(diff);
