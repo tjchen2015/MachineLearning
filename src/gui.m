@@ -22,7 +22,7 @@ function varargout = gui(varargin)
 
 % Edit the above text to modify the response to help gui
 
-% Last Modified by GUIDE v2.5 06-Dec-2015 14:17:25
+% Last Modified by GUIDE v2.5 18-Dec-2015 17:52:45
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -74,6 +74,7 @@ function varargout = gui_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
 
 
+
 % --- Executes on button press in loadbutton.
 function loadbutton_Callback(hObject, eventdata, handles)
 % hObject    handle to loadbutton (see GCBO)
@@ -91,26 +92,39 @@ end
 
 
 
-% --- Executes on button press in computebutton.
-function computebutton_Callback(hObject, eventdata, handles)
-% hObject    handle to computebutton (see GCBO)
+% --- Executes on button press in segmentbutton.
+function segmentbutton_Callback(hObject, eventdata, handles)
+% hObject    handle to segmentbutton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-%run example code
-example;
+% if image is loaded
+ isEmpytAxes = isempty(get(handles.originFrame, 'Children'));
+ if ~isEmpytAxes
+     %run example code
+     example;
 
-% plot scelra
-% sclera = imread('scleraImage.bmp');
-% axes(handles.scleraFrame);
-% imshow(sclera); 
+    % plot result
+    result = imread('outputImage.bmp');
+    axes(handles.originFrame);
+    imshow(result); 
 
-% plot iris
-% iris = imread('irisImage.bmp');
-% axes(handles.irisFrame);
-% imshow(iris); 
+    % plot scelra
+    sclera = imread('scleraImage.bmp');
+    axes(handles.scleraFrame);
+    imshow(sclera); 
 
-% plot result
-result = imread('outputImage.bmp');
-axes(handles.originFrame);
-imshow(result); 
+    % plot iris
+    iris = imread('irisImage.bmp');
+    axes(handles.irisFrame);
+    imshow(iris); 
+
+    %print accuracy
+    load('accu.mat');
+    a = num2str(accu);
+    str = ['Accuracy Rate: ', a, '%'];
+    set(handles.text6, 'String', str);
+
+ else
+     fprintf('You have not load an eye image yet!');
+ end
