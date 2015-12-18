@@ -4,3 +4,4 @@ function u = averageIntensity(subImage)
 
 rowCount = size(subImage, 1);
 u = sum(subImage) / rowCount;
+
