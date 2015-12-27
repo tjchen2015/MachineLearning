@@ -1,13 +1,17 @@
 % function [] = testFeatureSet()
 
-for i = 1:30
+for i = 1:1
     testImage = imread(sprintf('D:\\HomeworkWorkspace\\Machine Learning\\Final project\\databases\\ICE\\%d.bmp', i));
-    scFeatureSet = scleraFeatureSet(im2double(testImage));
+    testImage = im2double(testImage);
     
-    filename = ['D:\HomeworkWorkspace\Machine Learning\Final project\data\feature sets\ICE\sc' num2str(i)];
-    save(filename, 'scFeatureSet');
+    %sclera feature
+%     scFeatureSet = scleraFeatureSet(testImage);
+    
+    %iris feature
+    detectedSclera = imread(sprintf('D:\\HomeworkWorkspace\\Machine Learning\\Final project\\databases\\answer\\ansSclera%d.bmp', i));
+    detectedSclera = double(detectedSclera);
+    irisFeatureSet = irisFeatureSet(testImage, im2double(detectedSclera));
+    
+    filename = ['D:\HomeworkWorkspace\Machine Learning\Final project\data\feature sets\ICE\iris' num2str(i)];
+    save(filename, 'irisFeatureSet');
 end
-
-% detectedSclera = imread(sprintf('D:\\HomeworkWorkspace\\Machine Learning\\Final project\\databases\\answer\ansSclera1.bmp');
-% detectedSclera = double(detectedSclera);
-% irisFeatureSet = irisFeatureSet(testImage, detectedSclera);
