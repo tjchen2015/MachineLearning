@@ -1,4 +1,4 @@
-net1 = feedforwardnet([12 18], 'traincgf');
+net1 = feedforwardnet([16 24], 'traincgf');
 for j = 1:10
     j
     for i = 1:40
