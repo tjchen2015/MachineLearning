@@ -1,4 +1,27 @@
-ICE/
-UBIRIS/
-scleraFeatureSet/
-net/
+answer/ICE/*
+answer/UBIRIS/*
+answer/UBIRIS/*/*
+output/*
+output/neural network/*
+output/neural network/ICE/*
+output/neural network/UBIRIS/*
+feature/ICE/*
+feature/UBIRIS/*
+feature/ICE/sclera/*
+feature/ICE/iris/*
+feature/UBIRIS/sclera/*
+feature/UBIRIS/iris/*
+databases/ICE/*
+databases/UBIRIS/*
+
+
+!answer/ICE/.keep
+!answer/UBIRIS/.keep
+!output/neural network/ICE/.keep
+!output/neural network/UBIRIS/.keep
+!feature/ICE/sclera/.keep
+!feature/ICE/iris/.keep
+!feature/UBIRIS/sclera/.keep
+!feature/UBIRIS/iris/.keep
+!databases/ICE/.keep
+!databases/UBIRIS/.keep

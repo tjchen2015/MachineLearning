@@ -4,11 +4,34 @@ function p = scleraProportion(detectedSclera, x, y)
 
 [height, width] = size(detectedSclera);
 
-II = myIntegralImage(detectedSclera);
+xRange = x-1:x;
+yRange = y-1:y;
 
-pWest = averageIntensity(II, 1, y-1, x, y);
-pEast = averageIntensity(II, x, y-1, width, y);
-pNorth = averageIntensity(II, x-1, 1, x, y);
-pSouth = averageIntensity(II, x-1, y, x, height);
+if x == 1
+    xRange = 1;
+end
+
+if y == 1
+    yRange = 1;
+end
+subImage = detectedSclera(yRange, 1:x);
+[tmpY, tmpX] = size(subImage);
+subImage = reshape(subImage, [tmpX * tmpY, 1]);
+pWest = averageIntensity(subImage);
+
+subImage = detectedSclera(yRange, x:width);
+[tmpY, tmpX] = size(subImage);
+subImage = reshape(subImage, [tmpX * tmpY, 1]);
+pEast = averageIntensity(subImage);
+
+subImage = detectedSclera(1:y, xRange);
+[tmpY, tmpX] = size(subImage);
+subImage = reshape(subImage, [tmpX * tmpY, 1]);
+pNorth = averageIntensity(subImage);
+
+subImage = detectedSclera(y:height, xRange);
+[tmpY, tmpX] = size(subImage);
+subImage = reshape(subImage, [tmpX * tmpY, 1]);
+pSouth = averageIntensity(subImage);
 
 p = [pWest; pEast; pNorth; pSouth];
