@@ -16,6 +16,6 @@ for j = 1:10
             net = train(net, feature, answer);
         end
     end
-    filename = ['../output/neural network/ICE/2Layer_53Image_train' num2str(j)];
+    filename = ['../output/neural network/UBIRIS/sclera/2Layer_53Image_train' num2str(j)];
     save(filename, 'net');
 end
