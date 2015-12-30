@@ -7,15 +7,15 @@ for j = 1:10
         feature = load(filename);
         feature = feature.generatedIrisFeatureSet;
 
-        scleraImage = imread(sprintf('../answer/ICE/ansSclera%d.bmp', i));
-        [r, c] = size(scleraImage);
-        answer = reshape(im2double(scleraImage).', 1, r*c);
+        irisImage = imread(sprintf('../answer/ICE/ansIris%d.bmp', i));
+        [r, c] = size(irisImage);
+        answer = reshape(im2double(irisImage).', 1, r*c);
         if i==1 && j==1
             net = train(net1, feature, answer);
         else
             net = train(net, feature, answer);
         end
     end
-    filename = ['../output/neural network/ICE/2Layer_40Image_train' num2str(j)];
+    filename = ['../output/neural network/ICE/iris/2Layer_40Image_train' num2str(j)];
     save(filename, 'net');
 end
