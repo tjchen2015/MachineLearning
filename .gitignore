@@ -1,10 +1,10 @@
 answer/ICE/*
 answer/UBIRIS/*
 answer/UBIRIS/*/*
-output/*
-output/neural network/*
-output/neural network/ICE/*
-output/neural network/UBIRIS/*
+output/neural network/ICE/sclera/*
+output/neural network/ICE/iris/*
+output/neural network/UBIRIS/sclera/*
+output/neural network/UBIRIS/iris/*
 feature/ICE/*
 feature/UBIRIS/*
 feature/ICE/sclera/*
@@ -17,8 +17,10 @@ databases/UBIRIS/*
 
 !answer/ICE/.keep
 !answer/UBIRIS/.keep
-!output/neural network/ICE/.keep
-!output/neural network/UBIRIS/.keep
+!output/neural network/ICE/sclera/.keep
+!output/neural network/ICE/iris/.keep
+!output/neural network/UBIRIS/sclera/.keep
+!output/neural network/UBIRIS/iris/.keep
 !feature/ICE/sclera/.keep
 !feature/ICE/iris/.keep
 !feature/UBIRIS/sclera/.keep
