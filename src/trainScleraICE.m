@@ -1,4 +1,3 @@
-
 featureSet = [];
 answer = [];
 for i = 1:40
@@ -15,7 +14,7 @@ end
 net = feedforwardnet([12 18], 'traincgf');
 
 for j = 1:10
-    net = train(net, feature, answer);
+    net = train(net, featureSet, answer);
     
     filename = ['../output/neural network/ICE/2Layer_40Image_ConcatMatrix_train' num2str(j)];
     save(filename, 'net');
