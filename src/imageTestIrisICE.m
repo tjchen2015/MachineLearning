@@ -6,7 +6,7 @@ testImageFile = sprintf('../databases/ICE/%d.bmp', imageID);
 testImage = imread(testImageFile);
 testImage = im2double(testImage);
 % detectedScleraFile = sprintf('../answer/ICE/ansSclera%d.bmp', imageID);
-detectedScleraFile = sprintf('../output/image/ICE/sclera%d.bmp', i);
+detectedScleraFile = sprintf('../output/image/ICE/sclera%d.bmp', imageID);
 detectedSclera = imread(detectedScleraFile);
 detectedSclera = im2double(detectedSclera);
 
