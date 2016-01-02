@@ -1,3 +1,5 @@
+import Core.*;
+
 featureSet = [];
 answer = [];
 for i = 1:40

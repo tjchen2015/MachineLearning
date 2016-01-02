@@ -1,3 +1,5 @@
+import Core.*;
+
 net = load('../output/neural network/UBIRIS/sclera/2Layer_53Image_train10');
 net = net.net;
 

@@ -1,4 +1,6 @@
-for i = 156:156
+import Core.*;
+
+for i = 1:40
     testImage = imread(sprintf('../databases/ICE/%d.bmp', i));
     testImage = im2double(testImage);
     

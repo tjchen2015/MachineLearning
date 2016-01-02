@@ -1,3 +1,5 @@
+import Core.*;
+
 net = load('../output/neural network/ICE/sclera/2Layer_40Image_train10');
 net = net.net;
 
