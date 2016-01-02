@@ -12,9 +12,9 @@ for i = [1 10 11 12 13 14 15 16 17 18 19 20 21 23 24 25 27 29 30 31 32 33 34 35 
 end
 
 net = feedforwardnet([20 30], 'traincgf');
-net.efficiency.memoryReduction = 1;
+
 for j = 1:10
-    net = train(net, featureSet, answer);
+    net = train(net, featureSet, answer, 'reduction', 10);
     
     filename = ['../output/neural network/UBIRIS/sclera/2Layer_53Image_ConcatMatrix_train' num2str(j)];
     save(filename, 'net');

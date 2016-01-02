@@ -14,7 +14,7 @@ end
 net = feedforwardnet([18 27], 'traincgf');
 
 for j = 1:10
-    net = train(net, featureSet, answer);
+    net = train(net, featureSet, answer, 'reduction', 10);
     
     filename = ['../output/neural network/UBIRIS/iris/2Layer_53Image_ConcatMatrix_train' num2str(j)];
     save(filename, 'net');
