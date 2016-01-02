@@ -1,35 +1,65 @@
-%% load an eye picture
+%% load an eye picture and its file name
 testImage = imread('testImage.bmp');
 testImage = double(testImage);
 testImage = testImage/255;
 
+fid = fopen('eyeClassNo.txt', 'rt');
+classPath = fgets(fid);
+fileName = fgets(fid);
+fclose(fid);
+
+
 %% find the teacher's answer and draw iris region with red color
-eyeNo = 1;
-load('ICEcircleinfo.mat');
+name = strsplit(fileName, '.');
+name = name(1);
+eyeNo = str2double(name);
+eyeNo = round(eyeNo);
+cps= strsplit(classPath, '\');
+l = length(cps);
+class = cps(l-1);
+classPath = ['..\', cps(l-2), '\', class, '\circleinfo'];
+answerPath = strjoin(classPath, '');
+% load('..\databases\ICE\circleinfo', 'circleinfo');
+load(answerPath, 'circleinfo');
 teacherAns = circleinfo(eyeNo,1:6);
 outputImage = drawCorBoundary(testImage, teacherAns);
 
 
 %% extract sclera features
+scFeatureSet = getFeture(testImage, class, 'sclera');
 
 
 %% input to sclera network & output a sclera image then "save as scleraImage.bmp"
+netPath = ['..\output\neural network\', class, '\sclera\2Layer_40Image_ConcatMatrix_train10']
+netSclera = load(netPath, 'net');
+netSclera = netSclera.net;
+output = netSclera(scFeatureSet);
+scleraImage = reshape(output, 640, 480).';
 
+imagesc(scleraImage);
+colormap gray;
+imwrite(scleraImage, 'scleraImage.bmp');
 
-%% extract 4 proportions of tthe sclera image
-
-
-%% append 4p to the sclera feature
+%% extract iris features
+iFeatureSet = getFeture(testImage, class, 'iris');
 
 
 %% input to iris network & output a iris image then "save as irisImage.bmp"
+netPath = ['..\output\neural network\', class, '\iris\2Layer_53Image_train10']
+netIris = load(netPath, 'net');
+netIris = netIris.net;
+output = netIris(iFeatureSet);
+irisImage = reshape(output, 640, 480).';
 
+imagesc(irisImage);
+colormap gray;
+imwrite(irisImage, 'irisImage.bmp');
 
 %% assume we have get iris image
-imFile = strcat('C:\Users\Justin\Dropbox\Data Science\MachineLearning\NCU course\ICE\answer\', 'ansIris1.bmp');
-irisImage = imread(imFile);
-irisImage = double(irisImage);
-irisImage = irisImage/255;
+% imFile = strcat('C:\Users\Justin\Dropbox\Data Science\MachineLearning\NCU course\ICE\answer\', 'ansIris1.bmp');
+% irisImage = imread(imFile);
+% irisImage = double(irisImage);
+% irisImage = irisImage/255;
 
 %% find iris center and 2 borders
 centerPos = findCenter(irisImage);

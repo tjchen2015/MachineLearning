@@ -1,0 +1,19 @@
+Input: 
+ourAns = [xi, yi, ri, xo, yo, ro]
+teacherAns = [txi, tyi, tri, txo, tyo, tro]
+Output:
+accuracy = 1 - error
+
+error = curError/maxError
+if error > 100%
+then error = 1
+
+
+curError = ||ourAns - teacherAns||^2
+         = (xi - txi)^2 + (yi - tyi)^2 + (ri - tri)^2
+		 + (xo - txo)^2 + (yo - tyo)^2 + (ro - tro)^2
+		 
+maxError = maxE1 + maxE2 + maxE3 + maxE4
+         = ((n/2)^2 + (m/2)^2) + (tri/2)^2 + ((n/2)^2 + (m/2)^2) + (tro/2)^2
+		 = (n^2 + m^2)/4 + (tri^2)/4 + (n^2 + m^2)/4 + (tro^2)/4
+		 

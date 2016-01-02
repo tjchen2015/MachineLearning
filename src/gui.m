@@ -81,9 +81,16 @@ function loadbutton_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-[FileName,PathName] = uigetfile('*.bmp','Select an eye image');
+[FileName,PathName] = uigetfile('*.bmp','Select an eye image', '../databases/');
 str = [PathName, FileName];
 if  ~isequal(str,zeros(1,2)) && exist(str, 'file')
+    
+%     save class and id of chosen image
+    fileID = fopen('eyeClassNo.txt','wt+');
+    fprintf(fileID, '%s \n%s', PathName, FileName);
+    fclose(fileID);
+    
+%     prepare testimage
     testImage = imread(str);
     axes(handles.originFrame);
     imshow(testImage); 
