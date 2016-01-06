@@ -13,15 +13,19 @@ error = ourAns - teacherAns;
 error = error.^2;
 error = sum(error);
 
+% teacherAns
+% ourAns
+
+inverse_sensitivity = 0.05;
 %determine max square error for two center points
-scaleP = 0.5;
+scaleP = inverse_sensitivity;
 size = [480, 640];
 nsize = size.^2;
 nsize =sum(nsize);
 maxe1e3 = scaleP*nsize;
 
 %determine max square error for two radii
-scaleR = 0.5;
+scaleR = inverse_sensitivity;
 maxe2 = scaleR.^2.*teacherAns(3);
 maxe4 = scaleR.^2.*teacherAns(6);
 

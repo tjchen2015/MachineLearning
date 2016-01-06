@@ -80,13 +80,14 @@ function loadbutton_Callback(hObject, eventdata, handles)
 % hObject    handle to loadbutton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+set(handles.text10, 'String', 'Loading!');
+set(handles.text10, 'visible', 'on');
 [FileName,PathName] = uigetfile('*.bmp','Select an eye image', '../databases/');
 str = [PathName, FileName];
 if  ~isequal(str,zeros(1,2)) && exist(str, 'file')
     
 %     save class and id of chosen image
-    fileID = fopen('eyeClassNo.txt','wt+');
+    fileID = fopen('../output/eyeClassNo.txt','wt+');
     fprintf(fileID, '%s \n%s', PathName, FileName);
     fclose(fileID);
     
@@ -94,8 +95,10 @@ if  ~isequal(str,zeros(1,2)) && exist(str, 'file')
     testImage = imread(str);
     axes(handles.originFrame);
     imshow(testImage); 
-    imwrite(testImage, 'testImage.bmp');
+    imwrite(testImage, '../output/testImage.bmp');
+    
 end
+set(handles.text10, 'visible', 'off');
 
 
 
@@ -105,33 +108,44 @@ function segmentbutton_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+set(handles.text10, 'String', 'Computing!');
+set(handles.text10, 'visible', 'on');
+
+% wait for the hint massage
+pause(1)
+disp('Get start!');
+disp('There are 10 steps to go through!');
+
 % if image is loaded
  isEmpytAxes = isempty(get(handles.originFrame, 'Children'));
  if ~isEmpytAxes
+     
      %run example code
      example;
 
     % plot result
-    result = imread('outputImage.bmp');
+    result = imread('../output/outputImage.bmp');
     axes(handles.originFrame);
     imshow(result); 
 
     % plot scelra
-    sclera = imread('scleraImage.bmp');
+    sclera = imread('../output/scleraImage.bmp');
     axes(handles.scleraFrame);
     imshow(sclera); 
 
     % plot iris
-    iris = imread('irisImage.bmp');
+    iris = imread('../output/irisImage.bmp');
     axes(handles.irisFrame);
     imshow(iris); 
 
     %print accuracy
-    load('accu.mat');
+    load('../output/accu.mat');
     a = num2str(accu);
     str = ['Accuracy Rate: ', a, '%'];
     set(handles.text6, 'String', str);
 
  else
-     fprintf('You have not load an eye image yet!');
+     disp('You have not load an eye image yet!');
  end
+ 
+ set(handles.text10, 'String', 'Done!');

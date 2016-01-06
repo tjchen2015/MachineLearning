@@ -1,7 +1,7 @@
 net = load('../output/neural network/ICE/sclera/2Layer_40Image_train10');
 net = net.net;
 
-imageID = 140;
+imageID = 156;
 filename = sprintf('../databases/ICE/%d.bmp', imageID);
 testImage = imread(filename);
 testImage = im2double(testImage);

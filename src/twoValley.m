@@ -1,20 +1,25 @@
-function [  leftPos rightPos] = twoValley( vector )
-% To find to valley position in the input vector
+function centerPos = twoValley( vector )
+% To find center peak position in the input vector
 
-% search the  two valleys
-[pmax, maxIndex, pmin, minIndex] = extrema(vector);
-% 
-% figure;
-% plot(vector);
-% hold on;
-% plot(minIndex, pmin, 'r*');
+% ignore the warning for clean console box
+MSGID = 'MATLAB:polyfit:RepeatedPointsOrRescale';
+warning('off', MSGID);
 
-clear pmax;
-clear maxIndex;
-clear pmin
+% use polynomial regression and derevitive to get the center position
+x = 1:length(vector);
+p = polyfit(x, vector, 4);
+py = polyval(p, x);
+dp = polyder(p);
+r = roots(dp);
+centerPos = r(2);
 
-leftPos = min(minIndex);
-rightPos = max(minIndex);
+warning('on', MSGID);
 
+figure;
+plot(vector);
+hold on;
+plot(x, py);
+yr = polyval(p, centerPos);
+plot(centerPos, yr, 'r*');
 end
 

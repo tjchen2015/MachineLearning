@@ -1,4 +1,4 @@
-for i = 1:40
+for i = 156:156
     testImage = imread(sprintf('../databases/ICE/%d.bmp', i));
     testImage = im2double(testImage);
     

@@ -7,13 +7,11 @@ centerPos = [];
 columnSum = sum(irisImage);
 rowSum = sum(irisImage,2);
 
-% find two valleys of columnSum and produce center coordinate on column
-[ leftValley, rightValley ] = twoValley(columnSum);
-centerPos(2) = (leftValley + rightValley)/2;
+% find the center peak of columnSum
+centerPos(2) = twoValley(columnSum);
 
-% find two valleys of rowSum and produce center coordinate on row
-[leftValley, rightValley] = twoValley(rowSum);
-centerPos(1) =  (leftValley + rightValley)/2;
+% find the center peak of rowSum
+centerPos(1) = twoValley(rowSum');
 
 centerPos = round(centerPos);
 end

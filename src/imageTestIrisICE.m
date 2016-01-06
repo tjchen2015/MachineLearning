@@ -1,11 +1,12 @@
 net = load('../output/neural network/ICE/iris/2Layer_40Image_train10');
 net = net.net;
 
-imageID = 35;
+imageID = 156;
 testImageFile = sprintf('../databases/ICE/%d.bmp', imageID);
 testImage = imread(testImageFile);
 testImage = im2double(testImage);
-detectedScleraFile = sprintf('../answer/ICE/ansSclera%d.bmp', imageID);
+% detectedScleraFile = sprintf('../answer/ICE/ansSclera%d.bmp', imageID);
+detectedScleraFile = sprintf('../output/image/ICE/sclera%d.bmp', i);
 detectedSclera = imread(detectedScleraFile);
 detectedSclera = im2double(detectedSclera);
 

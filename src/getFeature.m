@@ -11,13 +11,15 @@ if isICE
     if isSclera
         feature = scleraFeatureSet(testImage);
     else
-        feature = irisFeatureSet(testimage)
+        detectedSclera = imread('../output/scleraImage.bmp');
+        feature = irisFeatureSet(testImage, im2double(detectedSclera));
     end
 else
     if isSclera
-        feature = scleraFeatureUBIRIS(testimage);
+        feature = scleraFeatureSet(testImage);
     else
-        feature = irisFeatureUBIRIS(testimage);
+        detectedSclera = imread('../output/scleraImage.bmp');
+        feature = irisFeatureSet(testImage, im2double(detectedSclera));
     end
 end
     
