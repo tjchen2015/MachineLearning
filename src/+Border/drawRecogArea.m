@@ -6,6 +6,8 @@ function outputImage = drawRecogArea( irisImage, innerCenterPos, innerDis, outer
 %   innerDis - the inner-border distance w.r.t. center postion
 %   outerDis - the outer-border distance w.r.t. center postion
 
+import Border.*;
+
 %convert binary image to RGB image
 irisImage = im2uint8(irisImage);
 
@@ -49,10 +51,6 @@ outerCoordinates = round(outerCoordinates);
 
 %draw inner and outer polygon by lines
 irisImage = insertShape(irisImage, 'Line', {innerCoordinates, outerCoordinates}, 'Color', {color, color}, 'Opacity', 0.7, 'LineWidth', 4);
-
-% %show image
-% figure;
-% imshow(irisImage);
 
 outputImage = irisImage;
 end

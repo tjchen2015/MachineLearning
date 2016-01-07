@@ -122,22 +122,22 @@ if ~isEmpytAxes
     example(pathName, fileName, testImage);
 
     % plot answer comparison result
-    result = imread('../output/outputImage.bmp');
+    global result;
     axes(handles.originFrame);
     imshow(result); 
 
     % plot scelra
-    sclera = imread('../output/scleraImage.bmp');
+    global sclera;
     axes(handles.scleraFrame);
     imshow(sclera);
 
     % plot iris
-    iris = imread('../output/irisImage.bmp');
+    global  iris;
     axes(handles.irisFrame);
     imshow(iris);
 
     %print accuracy
-    load('../output/accu.mat');
+    global accu;
     a = num2str(accu);
     str = ['Accuracy Rate: ', a, '%'];
     set(handles.text6, 'String', str);

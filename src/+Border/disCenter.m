@@ -7,6 +7,8 @@ function distance = disCenter( irisImage, centerPos, io )
 %   centerPos - the center position
 %   io - 1 means to get inner border and 2 means to get outer border
 
+import Border.*;
+
 distance = [];
 imageSize = size(irisImage);
 rMax = sqrt(imageSize(1)^2 + imageSize(2)^2)/2;

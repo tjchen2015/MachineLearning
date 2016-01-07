@@ -1,6 +1,7 @@
 function example(classPath, fileName, testImage)
 
 import Core.*;
+import Border.*
 
 %% load an eye picture and its file name
 [rowCount, colCount, channels] = size(testImage);
@@ -20,7 +21,6 @@ answerPath = strjoin(classPath, '');
 load(answerPath, 'circleinfo');
 teacherAns = circleinfo(eyeNo,1:6);
 outputImage = drawCorBoundary(testImage, teacherAns);
-
 disp('2. Draw teacher answer in red successfully!');
 
 %% extract sclera features
@@ -30,9 +30,11 @@ disp('3. Extract sclera feature successfully!');
 
 %% input to sclera network & output a sclera image then "save as scleraImage.bmp"
 if channels==1
-    scleraNet = load('../output/neural network/ICE/sclera/2Layer_40Image_ConcatMatrix_train10');
+%     scleraNet = load('../output/neural network/ICE/sclera/2Layer_40Image_ConcatMatrix_train10');
+    scleraNet = load('../output/neural network/ICE/sclera/network');
 else
-    scleraNet = load('../output/neural network/UBIRIS/sclera/UBIRIS_2Layer_53Image_ConcatMatrix_train1');
+%     scleraNet = load('../output/neural network/UBIRIS/sclera/UBIRIS_2Layer_53Image_ConcatMatrix_train1');
+    scleraNet = load('../output/neural network/UBIRIS/sclera/network');
 end
 scleraNet = scleraNet.net;
 scOutput = scleraNet(scFeatureSet);
@@ -41,8 +43,8 @@ scleraImage = reshape(scOutput, colCount, rowCount).';
 imagesc(scleraImage);
 colormap gray;
 scleraImage = im2bw(scleraImage, 0.4);
-imwrite(scleraImage, '../output/scleraImage.bmp');
-
+global sclera;
+sclera = scleraImage;
 disp('4. Generate sclera image successfully!');
 
 %% extract iris features
@@ -51,9 +53,11 @@ disp('5. Extract iris feature successfully!');
 
 %% input to iris network & output a iris image then "save as irisImage.bmp"
 if channels==1
-    irisNet = load('../output/neural network/ICE/iris/2Layer_40Image_train10');
+%     irisNet = load('../output/neural network/ICE/iris/2Layer_40Image_train10');
+    irisNet = load('../output/neural network/ICE/iris/network');
 else
-    irisNet = load('../output/neural network/UBIRIS/iris/2Layer_53Image_train10');
+%     irisNet = load('../output/neural network/UBIRIS/iris/2Layer_53Image_train10');
+    irisNet = load('../output/neural network/UBIRIS/iris/network');
 end
 irisNet = irisNet.net;
 irisOutput = irisNet(generatedIrisFeatureSet);
@@ -62,8 +66,8 @@ irisImage = reshape(irisOutput, colCount, rowCount).';
 imagesc(irisImage);
 colormap gray;
 irisImage = im2bw(irisImage, 0.4);
-imwrite(irisImage, '../output/irisImage.bmp');
-
+global iris;
+iris = irisImage;
 disp('6. Generate iris image successfully!');
 
 
@@ -77,21 +81,23 @@ outerDis = disCenter(irisImage, centerPos, 2);
 outerDisMax = max(outerDis);
 outerDis = ones(1,length(outerDis));
 outerDis = outerDisMax.*outerDis;
-
 disp('7. Find the center point and 2 borders success!');
 
 %% draw iris region with green color on output image
-outputImage = drawRecogArea( outputImage, centerPos, innerDis, centerPos, outerDis, 'green' );
+global result;
+result = drawRecogArea( outputImage, centerPos, innerDis, centerPos, outerDis, 'green' );
 disp('8. Draw our answer in green successfully!');
 
 %% compute and save accuracy
 flrCenterPos = fliplr(centerPos);
 ourAns = [flrCenterPos, innerDis(1), flrCenterPos, outerDis(1)];
+global accu;
 accu = accuracy(ourAns, teacherAns);
-save('../output/accu.mat', 'accu');
-
 disp('9. Evaluate accuracy successfully!');
 
 %% save eye image with iris segmentation
-imwrite(outputImage, '../output/outputImage.bmp');
+outputImage2 = drawRecogArea( testImage, centerPos, innerDis, centerPos, outerDis, 'green' );
+path = ['../answer/', class, '/', int2str(eyeNo), '.bmp'];
+path = strjoin(path, '');
+imwrite(outputImage2, path);
 disp('10. Save result image successfully!');
