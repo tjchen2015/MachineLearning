@@ -1,6 +1,6 @@
 import Core.*;
 
-net = load('../output/neural network/ICE/iris/2Layer_40Image_train10');
+net = load('../output/neural network/ICE/iris/2Layer_40Image_ConcatMatrix_train10');
 net = net.net;
 
 imageID = 156;
@@ -12,9 +12,9 @@ detectedScleraFile = sprintf('../output/image/ICE/sclera%d.bmp', imageID);
 detectedSclera = imread(detectedScleraFile);
 detectedSclera = im2double(detectedSclera);
 
-irisFeature = irisFeatureSet(testImage, detectedSclera);
+generatedIrisFeature = irisFeatureSet(testImage, detectedSclera);
 
-output = net(irisFeature);
+output = net(generatedIrisFeature);
 output1 = reshape(output, 640, 480).';
 % output2 = im2bw(output, 0.7);%binarization
 % output2 = reshape(output2, 640, 480).';

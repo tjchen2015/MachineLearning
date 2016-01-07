@@ -12,9 +12,9 @@ for imageID=[1 10 11 12 13 14 15 16 17 18 19 20]
     detectedSclera = imread(detectedScleraFile);
     detectedSclera = im2double(detectedSclera);
 
-    irisFeatureSet = irisFeatureSet(testImage, detectedSclera);
+    generatedIrisFeatureSet = irisFeatureSet(testImage, detectedSclera);
 
-    output = net(irisFeatureSet);
+    output = net(generatedIrisFeatureSet);
     output1 = reshape(output, 800, 600).';
     % output2 = im2bw(output, 0.7);%binarization
     % output2 = reshape(output2, 800, 600).';
