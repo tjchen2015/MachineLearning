@@ -80,23 +80,19 @@ function loadbutton_Callback(hObject, eventdata, handles)
 % hObject    handle to loadbutton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pathName
+global fileName
+global testImage
+
 set(handles.text10, 'String', 'Loading!');
 set(handles.text10, 'visible', 'on');
-[FileName,PathName] = uigetfile('*.bmp','Select an eye image', '../databases/');
-str = [PathName, FileName];
+[fileName,pathName] = uigetfile('*.bmp','Select an eye image', '../databases/');
+str = [pathName, fileName];
 if  ~isequal(str,zeros(1,2)) && exist(str, 'file')
-    
-%     save class and id of chosen image
-    fileID = fopen('../output/eyeClassNo.txt','wt+');
-    fprintf(fileID, '%s \n%s', PathName, FileName);
-    fclose(fileID);
-    
-%     prepare testimage
+    % prepare testimage
     testImage = imread(str);
     axes(handles.originFrame);
     imshow(testImage); 
-    imwrite(testImage, '../output/testImage.bmp');
-    
 end
 set(handles.text10, 'visible', 'off');
 
@@ -107,23 +103,25 @@ function segmentbutton_Callback(hObject, eventdata, handles)
 % hObject    handle to segmentbutton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global pathName
+global fileName
+global testImage
 
 set(handles.text10, 'String', 'Computing!');
 set(handles.text10, 'visible', 'on');
 
 % wait for the hint massage
 pause(1)
-disp('Get start!');
+disp('Get started!');
 disp('There are 10 steps to go through!');
 
 % if image is loaded
- isEmpytAxes = isempty(get(handles.originFrame, 'Children'));
- if ~isEmpytAxes
-     
-     %run example code
-     example;
+isEmpytAxes = isempty(get(handles.originFrame, 'Children'));
+if ~isEmpytAxes
+    %run example code
+    example(pathName, fileName, testImage);
 
-    % plot result
+    % plot answer comparison result
     result = imread('../output/outputImage.bmp');
     axes(handles.originFrame);
     imshow(result); 
@@ -131,12 +129,12 @@ disp('There are 10 steps to go through!');
     % plot scelra
     sclera = imread('../output/scleraImage.bmp');
     axes(handles.scleraFrame);
-    imshow(sclera); 
+    imshow(sclera);
 
     % plot iris
     iris = imread('../output/irisImage.bmp');
     axes(handles.irisFrame);
-    imshow(iris); 
+    imshow(iris);
 
     %print accuracy
     load('../output/accu.mat');
