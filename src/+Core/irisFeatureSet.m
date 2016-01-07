@@ -3,6 +3,8 @@ function featureSet = irisFeatureSet(I, detectedSclera)
 %output: a feature set in matrix form for each image pixel in iris stage
 %feature set: x, y, uS, sigmaS, uCb, sigmaCb, proportion of sclera
 
+import Core.*;
+
 [rowCount, colCount, channels] = size(I);
 pixelCount = rowCount * colCount;
 
@@ -24,9 +26,9 @@ if channels == 1
     
     %%%region of radius 3
     u3 = colfilt(I, [7, 7], 'sliding', @averageIntensity);
-    u3 = modifyEdge(u3, 3);
+    u3 = Core.modifyEdge(u3, 3);
     u3_2 = colfilt(I2, [7, 7], 'sliding', @averageIntensity);
-    u3_2 = modifyEdge(u3_2, 3);
+    u3_2 = Core.modifyEdge(u3_2, 3);
     
     diff = u3_2 - u3.^2;
     absDiff = abs(diff);
@@ -37,9 +39,9 @@ if channels == 1
     
     %%%region of radius 5
     u5 = colfilt(I, [11, 11], 'sliding', @averageIntensity);
-    u5 = modifyEdge(u5, 5);
+    u5 = Core.modifyEdge(u5, 5);
     u5_2 = colfilt(I2, [11, 11], 'sliding', @averageIntensity);
-    u5_2 = modifyEdge(u5_2, 5);
+    u5_2 = Core.modifyEdge(u5_2, 5);
     
     diff = u5_2 - u5.^2;
     absDiff = abs(diff);
@@ -50,9 +52,9 @@ if channels == 1
     
     %%%region of radius 7
     u7 = colfilt(I, [15, 15], 'sliding', @averageIntensity);
-    u7 = modifyEdge(u7, 7);
+    u7 = Core.modifyEdge(u7, 7);
     u7_2 = colfilt(I2, [15, 15], 'sliding', @averageIntensity);
-    u7_2 = modifyEdge(u7_2, 7);
+    u7_2 = Core.modifyEdge(u7_2, 7);
     
     diff = u7_2 - u7.^2;
     absDiff = abs(diff);
@@ -63,9 +65,9 @@ if channels == 1
     
     %%%region of radius 9
     u9 = colfilt(I, [19, 19], 'sliding', @averageIntensity);
-    u9 = modifyEdge(u9, 9);
+    u9 = Core.modifyEdge(u9, 9);
     u9_2 = colfilt(I2, [19, 19], 'sliding', @averageIntensity);
-    u9_2 = modifyEdge(u9_2, 9);
+    u9_2 = Core.modifyEdge(u9_2, 9);
     
     diff = u9_2 - u9.^2;
     absDiff = abs(diff);
@@ -91,9 +93,9 @@ else
     
     %%%region of radius 3
     uS3 = colfilt(imageS, [7, 7], 'sliding', @averageIntensity);
-    uS3 = modifyEdge(uS3, 3);
+    uS3 = Core.modifyEdge(uS3, 3);
     uS3_2 = colfilt(IS2, [7, 7], 'sliding', @averageIntensity);
-    uS3_2 = modifyEdge(uS3_2, 3);
+    uS3_2 = Core.modifyEdge(uS3_2, 3);
     
     diff = uS3_2 - uS3.^2;
     absDiff = abs(diff);
@@ -104,9 +106,9 @@ else
     
     %%%region of radius 7
     uS7 = colfilt(imageS, [15, 15], 'sliding', @averageIntensity);
-    uS7 = modifyEdge(uS7, 7);
+    uS7 = Core.modifyEdge(uS7, 7);
     uS7_2 = colfilt(IS2, [15, 15], 'sliding', @averageIntensity);
-    uS7_2 = modifyEdge(uS7_2, 7);
+    uS7_2 = Core.modifyEdge(uS7_2, 7);
     
     diff = uS7_2 - uS7.^2;
     absDiff = abs(diff);
@@ -125,9 +127,9 @@ else
     
     %%%region of radius 3
     uCb3 = colfilt(imageCb, [7, 7], 'sliding', @averageIntensity);
-    uCb3 = modifyEdge(uCb3, 3);
+    uCb3 = Core.modifyEdge(uCb3, 3);
     uCb3_2 = colfilt(ICb2, [7, 7], 'sliding', @averageIntensity);
-    uCb3_2 = modifyEdge(uCb3_2, 3);
+    uCb3_2 = Core.modifyEdge(uCb3_2, 3);
     
     diff = uCb3_2 - uCb3.^2;
     absDiff = abs(diff);
@@ -138,9 +140,9 @@ else
     
     %%%region of radius 7
     uCb7 = colfilt(imageCb, [15, 15], 'sliding', @averageIntensity);
-    uCb7 = modifyEdge(uCb7, 7);
+    uCb7 = Core.modifyEdge(uCb7, 7);
     uCb7_2 = colfilt(ICb2, [15, 15], 'sliding', @averageIntensity);
-    uCb7_2 = modifyEdge(uCb7_2, 7);
+    uCb7_2 = Core.modifyEdge(uCb7_2, 7);
     
     diff = uCb7_2 - uCb7.^2;
     absDiff = abs(diff);

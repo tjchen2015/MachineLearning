@@ -2,6 +2,8 @@ function p = scleraProportion(detectedSclera, x, y)
 %input: detected sclera (0: sclera pixels; 1: non-sclera pixels)
 %output: proportion of pixels that belong to the sclera in 4 directions
 
+import Core.*;
+
 [height, width] = size(detectedSclera);
 
 xRange = x-1:x;

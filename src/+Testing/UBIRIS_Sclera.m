@@ -1,4 +1,6 @@
-net = load('../output/neural network/UBIRIS/sclera/2Layer_40Image_train10');
+import Core.*;
+
+net = load('../output/neural network/UBIRIS/sclera/2Layer_53Image_train10');
 net = net.net;
 
 for imageID=[1 10 11 12 13 14 15 16 17 18 19 20]

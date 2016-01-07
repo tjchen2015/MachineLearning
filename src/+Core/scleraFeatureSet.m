@@ -3,6 +3,8 @@ function featureSet = scleraFeatureSet(I)
 %output: a feature set in matrix form for each image pixel in sclera stage
 %feature set: x, y, uH, sigmaH, uCb, sigmaCb, uCr, sigmaCr
 
+import Core.*;
+
 [rowCount, colCount, channels] = size(I);
 pixelCount = rowCount * colCount;
 
