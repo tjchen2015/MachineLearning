@@ -1,7 +1,7 @@
 function example(classPath, fileName, testImage)
 
 import Core.*;
-import Border.*
+import Border.*;
 
 %% load an eye picture and its file name
 [rowCount, colCount, channels] = size(testImage);

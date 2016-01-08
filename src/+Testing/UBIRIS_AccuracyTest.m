@@ -1,4 +1,5 @@
 import Core.*;
+import Border.*;
 
 scleraNet = load('../output/neural network/UBIRIS/sclera/UBIRIS_2Layer_53Image_ConcatMatrix_train1');
 scleraNet = scleraNet.net;

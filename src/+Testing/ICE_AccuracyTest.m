@@ -1,4 +1,5 @@
 import Core.*;
+import Border.*;
 
 scleraNet = load('../output/neural network/ICE/sclera/2Layer_40Image_ConcatMatrix_train10');
 scleraNet = scleraNet.net;
