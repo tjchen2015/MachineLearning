@@ -1,7 +1,7 @@
 import Core.*;
 import Border.*;
 
-scleraNet = load('../output/neural network/UBIRIS/sclera/UBIRIS_2Layer_53Image_ConcatMatrix_train1');
+scleraNet = load('../output/neural network/UBIRIS/sclera/2Layer_53Image_ConcatMatrix_train1');
 scleraNet = scleraNet.net;
 irisNet = load('../output/neural network/UBIRIS/iris/2Layer_53Image_train10');
 irisNet = irisNet.net;
@@ -9,11 +9,12 @@ irisNet = irisNet.net;
 rowCount = 600;
 colCount = 800;
 
-firstImageID = 1;
-lastImageID = 2;
+firstImageID = 601;
+lastImageID = 900;
 
 accuracyMat = [];
 for i = firstImageID:lastImageID
+    i
     filename = sprintf('../databases/UBIRIS/%d.bmp', i);
     testImage = imread(filename);
     testImage = im2double(testImage);

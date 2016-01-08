@@ -14,6 +14,7 @@ lastImageID = 1;
 
 accuracyMat = [];
 for i = firstImageID:lastImageID
+    i
     filename = sprintf('../databases/ICE/%d.bmp', i);
     testImage = imread(filename);
     testImage = im2double(testImage);
