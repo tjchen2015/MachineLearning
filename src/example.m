@@ -33,7 +33,7 @@ if channels==1
 %     scleraNet = load('../output/neural network/ICE/sclera/2Layer_40Image_ConcatMatrix_train10');
     scleraNet = load('../output/neural network/ICE/sclera/network');
 else
-%     scleraNet = load('../output/neural network/UBIRIS/sclera/UBIRIS_2Layer_53Image_ConcatMatrix_train1');
+%     scleraNet = load('../output/neural network/UBIRIS/sclera/2Layer_53Image_ConcatMatrix_train1');
     scleraNet = load('../output/neural network/UBIRIS/sclera/network');
 end
 scleraNet = scleraNet.net;
