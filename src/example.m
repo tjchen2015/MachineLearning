@@ -1,7 +1,7 @@
 function example(classPath, fileName, testImage)
 
 import Core.*;
-import Border.*
+import Border.*;
 
 %% load an eye picture and its file name
 [rowCount, colCount, channels] = size(testImage);
@@ -53,7 +53,7 @@ disp('5. Extract iris feature successfully!');
 
 %% input to iris network & output a iris image then "save as irisImage.bmp"
 if channels==1
-%     irisNet = load('../output/neural network/ICE/iris/2Layer_40Image_train10');
+%     irisNet = load('../output/neural network/ICE/iris/2Layer_40Image_ConcatMatrix_train10');
     irisNet = load('../output/neural network/ICE/iris/network');
 else
 %     irisNet = load('../output/neural network/UBIRIS/iris/2Layer_53Image_train10');
