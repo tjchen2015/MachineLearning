@@ -18,6 +18,6 @@ net = feedforwardnet([12 18], 'traincgf');
 for j = 1:10
     net = train(net, featureSet, answer);
     
-    filename = ['../output/neural network/ICE/2Layer_40Image_ConcatMatrix_train' num2str(j)];
+    filename = ['../output/neural network/ICE/sclera/2Layer_40Image_ConcatMatrix_train' num2str(j)];
     save(filename, 'net');
 end
