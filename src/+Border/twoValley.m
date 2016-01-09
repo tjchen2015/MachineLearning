@@ -13,7 +13,7 @@ p = polyfit(x, vector, 4);
 py = polyval(p, x);
 dp = polyder(p);
 r = roots(dp);
-centerPos = r(2);
+centerPos = real(r(2));
 
 warning('on', MSGID);
 
@@ -23,5 +23,6 @@ warning('on', MSGID);
 % plot(x, py);
 % yr = polyval(p, centerPos);
 % plot(centerPos, yr, 'r*');
+
 end
 

@@ -28,7 +28,7 @@ testImage = im2double(testImage);
 scFeatureSet = scleraFeatureSet(testImage);
 disp('3. Extract sclera feature successfully!');
 
-%% input to sclera network & output a sclera image then "save as scleraImage.bmp"
+%% input to sclera network & output a sclera image
 if channels==1
 %     scleraNet = load('../output/neural network/ICE/sclera/2Layer_40Image_ConcatMatrix_train10');
     scleraNet = load('../output/neural network/ICE/sclera/network');
@@ -51,7 +51,7 @@ disp('4. Generate sclera image successfully!');
 generatedIrisFeatureSet = irisFeatureSet(testImage, scleraImage);
 disp('5. Extract iris feature successfully!');
 
-%% input to iris network & output a iris image then "save as irisImage.bmp"
+%% input to iris network & output an iris image
 if channels==1
 %     irisNet = load('../output/neural network/ICE/iris/2Layer_40Image_ConcatMatrix_train10');
     irisNet = load('../output/neural network/ICE/iris/network');
@@ -81,7 +81,7 @@ outerDis = disCenter(irisImage, centerPos, 2);
 outerDisMax = max(outerDis);
 outerDis = ones(1,length(outerDis));
 outerDis = outerDisMax.*outerDis;
-disp('7. Find the center point and 2 borders success!');
+disp('7. Find the center point and 2 borders successfully!');
 
 %% draw iris region with green color on output image
 global result;

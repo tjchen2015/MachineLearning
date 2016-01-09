@@ -143,7 +143,7 @@ if ~isEmpytAxes
     set(handles.text6, 'String', str);
 
  else
-     disp('You have not load an eye image yet!');
+     disp('You have not loaded an eye image yet!');
  end
  
  set(handles.text10, 'String', 'Done!');
