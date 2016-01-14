@@ -1,16 +1,16 @@
 import Core.*;
 import Border.*;
 
-scleraNet = load('../output/neural network/UBIRIS/sclera/2Layer_53Image_ConcatMatrix_train1');
+scleraNet = load('../output/neural network/UBIRIS/sclera/2Layer_53Image_ConcatMatrix_train9');
 scleraNet = scleraNet.net;
-irisNet = load('../output/neural network/UBIRIS/iris/2Layer_53Image_train10');
+irisNet = load('../output/neural network/UBIRIS/iris/2Layer_53Image_ConcatMatrix_train3');
 irisNet = irisNet.net;
 
 rowCount = 600;
 colCount = 800;
 
-firstImageID = 601;
-lastImageID = 900;
+firstImageID = 1;
+lastImageID = 1;
 
 accuracyMat = [];
 for i = firstImageID:lastImageID

@@ -30,11 +30,9 @@ disp('3. Extract sclera feature successfully!');
 
 %% input to sclera network & output a sclera image
 if channels==1
-%     scleraNet = load('../output/neural network/ICE/sclera/2Layer_40Image_ConcatMatrix_train10');
-    scleraNet = load('../output/neural network/ICE/sclera/network');
+    scleraNet = load('../output/neural network/ICE/sclera/2Layer_45Image_ConcatMatrix_train10');
 else
-%     scleraNet = load('../output/neural network/UBIRIS/sclera/2Layer_53Image_ConcatMatrix_train1');
-    scleraNet = load('../output/neural network/UBIRIS/sclera/network');
+    scleraNet = load('../output/neural network/UBIRIS/sclera/2Layer_53Image_ConcatMatrix_train9');
 end
 scleraNet = scleraNet.net;
 scOutput = scleraNet(scFeatureSet);
@@ -53,11 +51,9 @@ disp('5. Extract iris feature successfully!');
 
 %% input to iris network & output an iris image
 if channels==1
-%     irisNet = load('../output/neural network/ICE/iris/2Layer_40Image_ConcatMatrix_train10');
-    irisNet = load('../output/neural network/ICE/iris/network');
+    irisNet = load('../output/neural network/ICE/iris/2Layer_45Image_ConcatMatrix_train10');
 else
-%     irisNet = load('../output/neural network/UBIRIS/iris/2Layer_53Image_train10');
-    irisNet = load('../output/neural network/UBIRIS/iris/network');
+    irisNet = load('../output/neural network/UBIRIS/iris/2Layer_53Image_ConcatMatrix_train3');
 end
 irisNet = irisNet.net;
 irisOutput = irisNet(generatedIrisFeatureSet);

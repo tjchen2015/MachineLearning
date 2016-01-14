@@ -1,9 +1,9 @@
 import Core.*;
 import Border.*;
 
-scleraNet = load('../output/neural network/ICE/sclera/2Layer_40Image_ConcatMatrix_train10');
+scleraNet = load('../output/neural network/ICE/sclera/2Layer_45Image_ConcatMatrix_train10');
 scleraNet = scleraNet.net;
-irisNet = load('../output/neural network/ICE/iris/2Layer_40Image_ConcatMatrix_train10');
+irisNet = load('../output/neural network/ICE/iris/2Layer_45Image_ConcatMatrix_train10');
 irisNet = irisNet.net;
 
 rowCount = 480;
