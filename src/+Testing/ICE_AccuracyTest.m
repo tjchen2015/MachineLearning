@@ -53,5 +53,5 @@ for i = firstImageID:lastImageID
     accuracyMat = [accuracyMat; imageAccuracy];
 end
 
-accuracyFilename = ['../output/ICEAccuracy_' num2str(firstImageID) 'to' num2str(lastImageID) '.mat'];
+accuracyFilename = ['../output/accuracy/ICEAccuracy_' num2str(firstImageID) 'to' num2str(lastImageID) '.mat'];
 save(accuracyFilename, 'accuracyMat');

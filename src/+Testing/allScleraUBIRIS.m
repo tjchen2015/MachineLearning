@@ -7,10 +7,10 @@ for i = [1 10 11 12 13 14 15 16 17 18 19 20 21 23 24 25 27 29 30 31 32 33 34 35 
     imgPath = sprintf('../databases/UBIRIS/%d.bmp', i);
     outImg = sclera(nnPath, imgPath, 3);
     
-    filename = ['../output/image/UBIRIS/sclera/sclera' num2str(i) '.bmp'];
+    filename = ['../output/result image/UBIRIS/sclera/sclera' num2str(i) '.bmp'];
     imwrite(outImg, filename);
     
     outImgBW = im2bw(outImg, threshold);
-    filename = ['../output/image/UBIRIS/sclera/scleraBW' num2str(i) '.bmp'];
+    filename = ['../output/result image/UBIRIS/sclera/scleraBW' num2str(i) '.bmp'];
     imwrite(outImgBW, filename);
 end
